@@ -255,234 +255,1162 @@ const CHEAT_SHEET_ITEMS = [
   }
 ];
 
-// Database of Templates (Free vs Premium)
+// Database of Templates (Category-based)
 const TEMPLATES_DATABASE = [
+  // PROFILE
   {
-    id: "free-readme",
-    title: "GitHub README (Standard)",
-    desc: "A clean, standard layout for open-source repositories.",
-    type: "free",
-    content: `# My Awesome Project
+    id: "profile-developer",
+    title: "Developer GitHub Profile",
+    desc: "Professional GitHub profile README with badges, tech stack, and stats.",
+    type: "profile",
+    content: `# Hi there, I'm [Your Name] 👋
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-blue?style=flat-square&logo=google-chrome)](https://yoursite.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/yourhandle)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=flat-square&logo=twitter)](https://twitter.com/yourhandle)
 
-A short, punchy sentence explaining what your project does.
+> 💻 Full-Stack Developer | 🚀 Open Source Contributor | 📚 Lifelong Learner
 
-## Features
-- 🚀 Quick & Easy setup
-- 🔒 Privacy-first client side logic
-- 🎨 Modern customizable layout
+## 🛠️ Tech Stack
 
-## Installation
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+
+## 📊 GitHub Stats
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=tokyonight&hide_border=true)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=yourusername&layout=compact&theme=tokyonight&hide_border=true)
+
+## 📌 Featured Projects
+
+| Project | Description | Stars |
+|---------|-------------|-------|
+| [AwesomeApp](https://github.com/you/awesomeapp) | Full-stack web application | ⭐ 120 |
+| [CLI Tool](https://github.com/you/clitool) | Productivity CLI for developers | ⭐ 80 |
+
+## 💬 About Me
+
+- 🔭 Currently working on **[current project]**
+- 🌱 Learning **[technology]**
+- 💡 Ask me about **React, Node.js, and System Design**
+- 📫 Reach me at **your@email.com**
+`
+  },
+  {
+    id: "profile-student",
+    title: "Student / Fresher Profile",
+    desc: "Clean student profile README highlighting education, projects, and skills.",
+    type: "profile",
+    content: `# Hi, I'm [Your Name] 👋 — Computer Science Student
+
+🎓 B.Tech | [University Name] | Class of 2025
+📍 [City, Country] | 📧 [your@email.com]
+
+## 🎯 Objective
+
+Passionate computer science student seeking opportunities to apply programming knowledge and contribute to real-world software projects.
+
+## 🎓 Education
+
+| Degree | Institution | Year | GPA |
+|--------|-------------|------|-----|
+| B.Tech in CSE | [University] | 2021–2025 | 8.5/10 |
+| Class XII | [School] | 2021 | 94% |
+
+## 💻 Skills
+
+- **Languages:** Python, Java, C++, JavaScript
+- **Web:** HTML, CSS, React, Node.js basics
+- **Databases:** MySQL, MongoDB basics
+- **Tools:** Git, VS Code, Linux terminal
+
+## 🚀 Projects
+
+### 📦 [Project Name](https://github.com/you/project)
+> Data analysis dashboard using Python and Pandas.
+- Built with **React + Node.js**
+- Features: user auth, real-time updates, REST API
+
+## 📜 Certifications
+
+- ✅ Python for Data Science — Coursera
+- ✅ Web Development Bootcamp — Udemy
+
+## 🌐 Connect
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat)](https://linkedin.com/in/yourhandle)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat&logo=github)](https://github.com/yourusername)
+`
+  },
+
+  // SOFTWARE APPLICATION
+  {
+    id: "software-app",
+    title: "Software Application README",
+    desc: "Complete README for a desktop/web/mobile application with setup and usage.",
+    type: "software",
+    content: `# AppName — [One-Line Description]
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Build](https://img.shields.io/github/actions/workflow/status/you/repo/ci.yml?branch=main)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+> **AppName** is a [brief description — what does it do, who is it for?]
+
+## ✨ Features
+
+- ⚡ **Fast** — [performance claim]
+- 🔒 **Secure** — [security aspect]
+- 🎨 **Beautiful UI** — [design highlight]
+- 🌐 **Cross-Platform** — Runs on Windows, macOS, and Linux
+
+## 📦 Installation
+
 \`\`\`bash
-npm install my-awesome-project
+# Clone the repository
+git clone https://github.com/yourusername/appname.git
+cd appname
+
+# Install dependencies
+npm install
+
+# Start the application
+npm start
 \`\`\`
 
-## Usage
-\`\`\`javascript
-import { start } from 'my-awesome-project';
-start();
+## ⚙️ Configuration
+
+Create a \`.env\` file in the root directory:
+
+\`\`\`env
+APP_PORT=3000
+APP_ENV=production
+DATABASE_URL=postgresql://user:password@localhost:5432/appdb
+API_SECRET_KEY=your_secret_key_here
 \`\`\`
 
-## License
-Distributed under the MIT License. See \`LICENSE\` for more information.
+## 🚀 Usage
+
+\`\`\`bash
+npm run dev       # Development mode
+npm run build     # Production build
+npm test          # Run tests
+npm run lint      # Lint code
+\`\`\`
+
+## 🗂️ Project Structure
+
+\`\`\`
+appname/
+├── src/
+│   ├── components/     # UI components
+│   ├── services/       # Business logic
+│   ├── utils/          # Utility functions
+│   └── index.js        # Entry point
+├── tests/
+├── docs/
+└── package.json
+\`\`\`
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## 📄 License
+
+MIT License — see [LICENSE](LICENSE) for details.
 `
   },
   {
-    id: "free-meeting",
-    title: "Meeting Notes template",
-    desc: "Organize meeting outlines, decisions, and action items.",
-    type: "free",
-    content: `# Meeting Notes: [Topic Name]
-
-**Date:** July 7, 2026
-**Attendees:** @john, @jane, @developer
-
-## 📌 Agenda
-1. Review Q2 milestones
-2. Outline new feature request
-3. Sync budget goals
-
-## 💬 Discussion
-- John presented visual prototypes for layout editor interfaces.
-- Jane raised concerns on local database loading times.
-- Development agreed on using client-side conversion logic.
-
-## 🏁 Decisions Made
-- [x] Launch client-side prototype.
-- [ ] Migrate server pipelines (Delayed).
-
-## 🚀 Action Items
-- [ ] @developer: Code HTML structure.
-- [ ] @jane: Perform manual browser testing.
-`
-  },
-  {
-    id: "free-blog",
-    title: "Blog Post Outline",
-    desc: "A structured outline to write professional SEO-friendly articles.",
-    type: "free",
-    content: `# How to Write Clean Code in JS
-
-*Published: July 7, 2026* | *Author: Admin*
-
-Summarize the blog post here in 1-2 paragraphs. This hooks readers and outlines what they will learn.
-
-## Introduction
-Provide context on Javascript best practices.
-
-## 🚀 Tip 1: Destructuring
-Explain destructuring syntax.
-\`\`\`javascript
-const user = { name: 'Alice', role: 'Admin' };
-const { name, role } = user;
-console.log(name); // Alice
-\`\`\`
-
-## 🧠 Tip 2: Avoid Global Vars
-Keep your scope tidy.
-
-## Summary
-Brief wrap up and request for user comment feedback!
-`
-  },
-  {
-    id: "free-journal",
-    title: "Daily Journal Log",
-    desc: "Write down daily notes, goals, and thoughts.",
-    type: "free",
-    content: `# Daily Log: 2026-07-07
-
-## 🎯 Daily Goals
-- [ ] Complete landing page styling
-- [ ] Implement AdSense settings modal
-- [ ] Verify Mammoth convert buffers
-
-## ⚡ Accomplishments
-- Setup basic HTML structure
-- Configured Marked parser inside split screen view
-
-## 💭 Reflections
-Today was highly productive. LocalStorage works seamlessly. Tomorrow we will refine the WYSIWYG sync.
-`
-  },
-  {
-    id: "prem-api",
-    title: "Comprehensive API Reference",
-    desc: "Detailed template for documenting RESTful API endpoints.",
-    type: "premium",
-    content: `# Developer API Reference
-
-Base URL: \`https://api.mdwriter.online/v1\`
-
-## Authentication
-Authenticate your API request by passing authorization Bearer headers:
-\`\`\`http
-Authorization: Bearer YOUR_API_TOKEN
-\`\`\`
-
-## 🛰 Get Documents
-Retrieve a list of saved markdown items.
-
-### Request
-\`\`\`http
-GET /documents
-\`\`\`
-
-### Response
-\`\`\`json
-{
-  "status": "success",
-  "data": [
-    {
-      "id": "doc_8231",
-      "title": "Untitled draft",
-      "word_count": 218
-    }
-  ]
-}
-\`\`\`
-
-## ❌ Status Error Codes
-| Code | Meaning | Details |
-| :--- | :--- | :--- |
-| \`400\` | Bad Request | Missing required body parameters |
-| \`401\` | Unauthorized | Invalid token headers |
-| \`404\` | Not Found | Resource not resolved |
-`
-  },
-  {
-    id: "prem-release",
+    id: "software-changelog",
     title: "Software Release Changelog",
-    desc: "A clean SemVer changelog based on Keep a Changelog.",
-    type: "premium",
+    desc: "SemVer-based changelog following Keep a Changelog format.",
+    type: "software",
     content: `# Changelog
 
 All notable changes to this project will be documented in this file.
 
-## [1.2.0] - 2026-07-07
-
-### Added
-- GitHub README generation wizard
-- Injected visual ad placeholder fallbacks
-- Bidirectional contenteditable editor sync
-
-### Changed
-- Refactored styles.css layout to support mobile responsive wrap
-- Swapped core fonts to Google Outfit
-
-### Fixed
-- Line-number misalignment during scroll actions
-- LocalStorage parsing exception check
-`
-  },
-  {
-    id: "prem-portfolio",
-    title: "Developer Profile README",
-    desc: "Professional GitHub profile outline with status badges.",
-    type: "premium",
-    content: `# Hi there, I'm [Your Name] 👋
-
-💻 Full Stack Developer | 🚀 Open Source Enthusiast | 📚 Lifelong Learner
-
-## Tech Stack
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-
-## 📊 GitHub Analytics
-![Stats](https://github-readme-stats.vercel.app/api?username=[your-user]&show_icons=true&theme=radical)
-
-## 💬 Let's Connect
-- Portfolio site: [https://yoursite.com](https://yoursite.com)
-- Twitter: [@yourhandle](https://twitter.com)
-`
-  },
-  {
-    id: "prem-saas",
-    title: "SaaS Landing Page Content",
-    desc: "High converting SaaS landing page structure and pricing grid.",
-    type: "premium",
-    content: `# CloudDoc - Real-time Doc collaboration
-
-### Write code. Build apps. Deploy instantly.
-A single workspace built for developers who need visual documentation layouts.
-
-[Get Started Free](#pricing) | [Book Demo](#contact)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-## Key Pillars
-- **Unmatched Speed:** Built on serverless vector networks.
-- **Top Security:** Zero database logs, encrypted browser memory.
+## [Unreleased]
 
-## 💰 Pricing Grid
-| Free | Pro | Scale |
-| :---: | :---: | :---: |
-| $0/mo | **$12/mo** | **$49/mo** |
-| 5 projects | Unlimited | Custom enterprise SLA |
-| Local backups | Cloud sync | Multi-region DBs |
+### Added
+- Feature in development
+
+---
+
+## [2.1.0] — 2026-07-07
+
+### Added
+- New dark mode with system preference detection
+- Export to PDF functionality
+- Keyboard shortcut overlay (press \`?\`)
+
+### Changed
+- Improved performance of large document rendering by 40%
+- Migrated authentication from JWT to session tokens
+
+### Fixed
+- Fixed line number misalignment during scroll (#142)
+- Resolved LocalStorage quota exceeded error (#137)
+
+---
+
+## [2.0.0] — 2026-05-15
+
+### Breaking Changes
+- Dropped support for Node.js < 16
+- Renamed config key \`editor.theme\` to \`ui.colorScheme\`
+
+### Added
+- Full TypeScript support
+- Plugin API v2 with lifecycle hooks
+
+### Removed
+- Removed deprecated \`importFile()\` method
+
+---
+
+## [1.0.0] — 2026-01-01
+
+### Added
+- Initial public release
+- Core markdown editor functionality
+- Split-pane live preview
+`
+  },
+
+  // OPEN SOURCE
+  {
+    id: "opensource-lib",
+    title: "Open Source Library README",
+    desc: "Full-featured README for an open-source library with badges and examples.",
+    type: "opensource",
+    content: `# library-name
+
+[![npm version](https://img.shields.io/npm/v/library-name.svg)](https://www.npmjs.com/package/library-name)
+[![Downloads](https://img.shields.io/npm/dm/library-name.svg)](https://www.npmjs.com/package/library-name)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/org/library-name/workflows/CI/badge.svg)](https://github.com/org/library-name/actions)
+[![Coverage](https://img.shields.io/codecov/c/github/org/library-name)](https://codecov.io/gh/org/library-name)
+
+> A minimal, zero-dependency library for [what it does].
+
+## Why library-name?
+
+- 🪶 **Tiny** — < 2kB gzipped
+- 🌳 **Tree-shakeable** — import only what you need
+- 🔷 **TypeScript-first** — full type support out of the box
+- ✅ **Battle-tested** — 100% test coverage
+
+## Installation
+
+\`\`\`bash
+npm install library-name
+# or
+yarn add library-name
+\`\`\`
+
+## Quick Start
+
+\`\`\`typescript
+import { doSomething, configure } from 'library-name';
+
+configure({ option: 'value' });
+const result = doSomething('input');
+console.log(result);
+\`\`\`
+
+## API Reference
+
+### \`doSomething(input, options?)\`
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| \`input\` | \`string\` | — | The input to process |
+| \`options.strict\` | \`boolean\` | \`false\` | Enable strict mode |
+| \`options.timeout\` | \`number\` | \`5000\` | Timeout in ms |
+
+**Returns:** \`Promise<Result>\`
+
+## Contributing
+
+1. Fork the repository
+2. Create your branch: \`git checkout -b feat/my-feature\`
+3. Commit: \`git commit -m 'feat: add my feature'\`
+4. Push and open a Pull Request
+
+## License
+
+MIT © [Your Name](https://github.com/yourusername)
+`
+  },
+  {
+    id: "opensource-contributing",
+    title: "CONTRIBUTING.md Guide",
+    desc: "Comprehensive contributing guidelines for open-source projects.",
+    type: "opensource",
+    content: `# Contributing to [Project Name]
+
+Thank you for considering contributing! 🎉
+
+## Getting Started
+
+\`\`\`bash
+# Fork the repo, then:
+git clone https://github.com/YOUR_USERNAME/project-name.git
+cd project-name
+npm install
+\`\`\`
+
+## How to Contribute
+
+### 🐛 Reporting Bugs
+
+Open an issue with:
+- OS and version
+- Steps to reproduce
+- Expected vs actual behavior
+
+### 💡 Suggesting Features
+
+Open a feature request with:
+- Use case description
+- Proposed solution
+- Alternatives considered
+
+## Development Workflow
+
+\`\`\`bash
+git checkout -b feat/your-feature
+npm run dev
+npm test
+npm run lint
+\`\`\`
+
+## Commit Convention
+
+We use [Conventional Commits](https://www.conventionalcommits.org/):
+
+| Type | Description |
+|------|-------------|
+| \`feat\` | New feature |
+| \`fix\` | Bug fix |
+| \`docs\` | Documentation only |
+| \`refactor\` | Code restructure |
+| \`test\` | Adding tests |
+| \`chore\` | Build process or tooling |
+
+**Example:** \`feat: add dark mode support\`
+
+## Pull Request Process
+
+1. Update \`CHANGELOG.md\`
+2. Ensure CI passes
+3. Request review from a maintainer
+
+**Thank you! ❤️**
+`
+  },
+
+  // RESEARCH
+  {
+    id: "research-paper",
+    title: "Research Paper README",
+    desc: "Structured academic paper README with abstract, methodology, and citations.",
+    type: "research",
+    content: `# [Research Title]: A Study on [Topic]
+
+**Authors:** [Author 1]¹, [Author 2]²
+**Affiliations:** ¹[University], ²[University]
+**Published:** [Conference/Journal], [Year]
+
+[![Paper](https://img.shields.io/badge/Paper-PDF-red)](link-to-pdf)
+[![Dataset](https://img.shields.io/badge/Dataset-Available-green)](link-to-dataset)
+[![Code](https://img.shields.io/badge/Code-GitHub-black)](https://github.com/you/repo)
+
+## 📋 Abstract
+
+[2-4 sentence abstract. Summarize the problem, approach, key findings, and implications.]
+
+## 🔬 Key Contributions
+
+1. **[Contribution 1]** — [Description]
+2. **[Contribution 2]** — [Description]
+3. Open-source code and datasets
+
+## 🏗️ Methodology
+
+### Dataset
+
+| Dataset | Size | Split (Train/Val/Test) | Source |
+|---------|------|------------------------|--------|
+| [Dataset A] | 50K samples | 80/10/10 | [Link] |
+
+### Training Details
+
+| Hyperparameter | Value |
+|----------------|-------|
+| Optimizer | AdamW (lr=3e-4) |
+| Batch size | 128 |
+| Epochs | 50 |
+| Hardware | 4× NVIDIA A100 |
+
+## 📈 Results
+
+| Method | Accuracy | F1-Score |
+|--------|----------|----------|
+| Baseline | 78.4% | 0.762 |
+| Prior SOTA | 83.2% | 0.821 |
+| **Ours** | **87.6%** | **0.869** |
+
+## 🛠️ Reproducing Results
+
+\`\`\`bash
+git clone https://github.com/you/research-repo
+pip install -r requirements.txt
+python train.py --config configs/main.yaml
+python evaluate.py --checkpoint checkpoints/best.pt
+\`\`\`
+
+## 📚 Citation
+
+\`\`\`bibtex
+@inproceedings{authorname2026title,
+  title     = {[Research Title]},
+  author    = {Author, First and Author, Second},
+  booktitle = {[Conference Name]},
+  year      = {2026}
+}
+\`\`\`
+`
+  },
+  {
+    id: "research-dataset",
+    title: "Research Dataset Card",
+    desc: "Dataset card with schema, statistics, and usage instructions.",
+    type: "research",
+    content: `# [Dataset Name] — [Short Description]
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![HuggingFace](https://img.shields.io/badge/🤗-Dataset-yellow)](https://huggingface.co/datasets/)
+
+## Overview
+
+| Property | Value |
+|----------|-------|
+| **Size** | [N] samples |
+| **Format** | JSON / CSV / Parquet |
+| **Language** | English |
+| **Task** | Classification / Regression |
+| **License** | CC BY 4.0 |
+
+## Data Structure
+
+\`\`\`json
+{
+  "id": "sample_001",
+  "text": "Input text or description",
+  "label": 1,
+  "metadata": {
+    "source": "origin",
+    "timestamp": "2026-07-07T12:00:00Z"
+  }
+}
+\`\`\`
+
+## Statistics
+
+| Split | Size |
+|-------|------|
+| Train | 8,000 |
+| Validation | 1,000 |
+| Test | 1,000 |
+
+## Usage
+
+\`\`\`python
+from datasets import load_dataset
+
+dataset = load_dataset("org/dataset-name")
+print(dataset["train"][0])
+\`\`\`
+
+## Known Limitations
+
+- English-only, limited domain coverage
+- Potential annotation bias in [specific area]
+
+## Citation
+
+\`\`\`bibtex
+@dataset{authorname2026datasetname,
+  author = {Author, First},
+  title  = {[Dataset Name]},
+  year   = {2026}
+}
+\`\`\`
+`
+  },
+
+  // DEVOPS / IaC
+  {
+    id: "devops-iac",
+    title: "Infrastructure as Code README",
+    desc: "Infrastructure repo README with Terraform structure, deployment, and runbooks.",
+    type: "devops",
+    content: `# Infrastructure — [Project / Environment Name]
+
+> Manages infrastructure for **[Project Name]** using Terraform + Ansible on AWS.
+
+[![Terraform](https://img.shields.io/badge/Terraform-1.7-623CE4?logo=terraform)](https://www.terraform.io/)
+[![Ansible](https://img.shields.io/badge/Ansible-2.16-EE0000?logo=ansible)](https://www.ansible.com/)
+[![AWS](https://img.shields.io/badge/AWS-Deployed-FF9900?logo=amazon-aws)](https://aws.amazon.com/)
+
+## 🗺️ Architecture Overview
+
+\`\`\`
+┌─────────────────────────────────────────────┐
+│              AWS Region (us-east-1)          │
+│                                             │
+│  ┌──── VPC (10.0.0.0/16) ───────────────┐  │
+│  │   Public Subnets     Private Subnets  │  │
+│  │   ┌──────────┐      ┌─────────────┐  │  │
+│  │   │   ALB    │─────▶│ ECS Cluster │  │  │
+│  │   └──────────┘      └──────┬──────┘  │  │
+│  │                     ┌──────▼──────┐  │  │
+│  │                     │ RDS Postgres │  │  │
+│  │                     └─────────────┘  │  │
+│  └───────────────────────────────────────┘  │
+└─────────────────────────────────────────────┘
+\`\`\`
+
+## 📁 Repository Structure
+
+\`\`\`
+infrastructure/
+├── terraform/
+│   ├── modules/
+│   │   ├── vpc/
+│   │   ├── ecs/
+│   │   ├── rds/
+│   │   └── alb/
+│   ├── environments/
+│   │   ├── dev/
+│   │   ├── staging/
+│   │   └── prod/
+│   └── main.tf
+├── ansible/
+│   ├── roles/
+│   └── site.yml
+└── scripts/
+    ├── deploy.sh
+    └── rollback.sh
+\`\`\`
+
+## 🚀 Getting Started
+
+\`\`\`bash
+brew install terraform
+brew install awscli && aws configure
+
+cd terraform/environments/dev
+terraform init
+terraform plan -out=plan.tfplan
+terraform apply plan.tfplan
+\`\`\`
+
+## ⚙️ Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| \`AWS_ACCESS_KEY_ID\` | AWS access key | ✅ |
+| \`TF_VAR_db_password\` | RDS master password | ✅ |
+| \`TF_VAR_environment\` | Target env (dev/staging/prod) | ✅ |
+
+## 📋 Runbooks
+
+### Rolling Deployment
+\`\`\`bash
+./scripts/deploy.sh --env prod --version v1.2.0
+\`\`\`
+
+### Rollback
+\`\`\`bash
+./scripts/rollback.sh --env prod --version v1.1.0
+\`\`\`
+
+## 📊 Cost Estimates (Monthly)
+
+| Resource | Instance | Cost |
+|----------|----------|------|
+| ECS Fargate | 2 vCPU, 4GB | ~$70 |
+| RDS PostgreSQL | db.t3.medium | ~$45 |
+| ALB | — | ~$20 |
+| **Total** | | **~$135/mo** |
+`
+  },
+  {
+    id: "devops-cicd",
+    title: "CI/CD Pipeline Documentation",
+    desc: "Document GitHub Actions pipeline stages, environments, and rollback procedures.",
+    type: "devops",
+    content: `# CI/CD Pipeline Documentation
+
+## Overview
+
+This document describes the continuous integration and deployment pipeline for **[Project Name]**.
+
+## Pipeline Stages
+
+\`\`\`
+Push → Lint → Build Image → Test Suite → Deploy Staging → Deploy Prod
+\`\`\`
+
+### 1. 🔍 Lint & Code Quality
+
+\`\`\`yaml
+lint:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - run: npm ci
+    - run: npm run lint
+    - run: npm run type-check
+\`\`\`
+
+### 2. 🏗️ Build & Push Docker Image
+
+\`\`\`yaml
+build:
+  needs: lint
+  steps:
+    - run: docker build -t $IMAGE_NAME:$GITHUB_SHA .
+    - run: docker push $IMAGE_NAME:$GITHUB_SHA
+\`\`\`
+
+### 3. 🧪 Test Suite
+
+| Test Type | Framework | Coverage Threshold |
+|-----------|-----------|-------------------|
+| Unit | Jest | 80% |
+| Integration | Supertest | 70% |
+| E2E | Playwright | Key flows |
+
+### 4. 🚀 Deployment
+
+| Branch | Environment | Auto-Deploy |
+|--------|-------------|-------------|
+| \`develop\` | Staging | ✅ Yes |
+| \`main\` | Production | 🔐 Manual approval |
+
+## Environments
+
+| Environment | URL | Cluster |
+|-------------|-----|---------|
+| Staging | https://staging.app.com | ECS staging |
+| Production | https://app.com | ECS prod |
+
+## Rollback Procedure
+
+1. Identify the last stable image tag
+2. Trigger rollback: \`Actions → Rollback → Run workflow\`
+3. Monitor metrics for 15 minutes
+4. File post-incident report within 24 hours
+`
+  },
+
+  // ML / AI
+  {
+    id: "ml-model",
+    title: "ML / AI Model Card",
+    desc: "Model card for a machine learning or AI model with training details and evaluation.",
+    type: "ml",
+    content: `# [Model Name] — [Task Description]
+
+[![HuggingFace](https://img.shields.io/badge/🤗-Model_Card-yellow)](https://huggingface.co/org/model)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
+## Model Card
+
+| Property | Value |
+|----------|-------|
+| **Task** | Text Classification |
+| **Architecture** | BERT-base |
+| **Parameters** | 125M |
+| **Training Data** | [Dataset Name] |
+| **Languages** | English |
+| **License** | Apache 2.0 |
+
+## Intended Use
+
+**Primary use:** [Describe the primary intended use]
+
+**Out-of-scope uses:**
+- Not for high-stakes decisions without human review
+- Not suitable for non-English tasks
+
+## Quick Start
+
+\`\`\`bash
+pip install transformers torch
+\`\`\`
+
+\`\`\`python
+from transformers import pipeline
+
+classifier = pipeline("text-classification", model="org/model-name", device=0)
+result = classifier("This product is amazing!")
+print(result)
+# [{'label': 'POSITIVE', 'score': 0.9998}]
+\`\`\`
+
+## Training Configuration
+
+\`\`\`python
+training_args = TrainingArguments(
+    num_train_epochs=3,
+    per_device_train_batch_size=16,
+    learning_rate=2e-5,
+    warmup_ratio=0.1,
+    fp16=True,
+)
+\`\`\`
+
+## Evaluation Results
+
+| Dataset | Accuracy | F1 |
+|---------|----------|----|
+| Test Set | 92.4% | 0.921 |
+| Benchmark A | 89.1% | 0.887 |
+
+## Bias & Limitations
+
+- Known biases from training data composition
+- Performance drops ~5% on [specific domain]
+- Best performance on inputs ≤ 256 tokens
+
+## Citation
+
+\`\`\`bibtex
+@article{authorname2026modelname,
+  title   = {[Model Name]: [Paper Title]},
+  author  = {Author, First and Author, Second},
+  year    = {2026}
+}
+\`\`\`
+`
+  },
+  {
+    id: "ml-experiment",
+    title: "ML Experiment Log",
+    desc: "Track ML experiments, hyperparameters, results, and learnings.",
+    type: "ml",
+    content: `# ML Experiment Log — [Project Name]
+
+**Goal:** [What are you trying to achieve?]
+**Researcher:** [Your Name]
+**Start Date:** 2026-07-07
+
+---
+
+## Experiment #001 — Baseline
+
+**Date:** 2026-07-07 | **Status:** ✅ Complete
+
+### Configuration
+
+\`\`\`yaml
+model: bert-base-uncased
+task: text-classification
+batch_size: 32
+learning_rate: 2e-5
+epochs: 3
+optimizer: AdamW
+\`\`\`
+
+### Results
+
+| Metric | Train | Validation | Test |
+|--------|-------|-----------|------|
+| Loss | 0.183 | 0.241 | 0.257 |
+| Accuracy | 94.2% | 87.3% | 86.8% |
+| F1 | 0.941 | 0.871 | 0.865 |
+
+### Observations
+
+- Model converges by epoch 2
+- Slight overfitting (train/val gap ~7%)
+- Class 3 has lowest recall (0.72)
+
+---
+
+## Experiment #002 — Increased Regularization
+
+**Date:** 2026-07-08 | **Status:** 🔄 In Progress
+
+### Changes from #001
+
+- Dropout: 0.1 → 0.3
+- Added label smoothing (0.1)
+- Reduced learning rate: 2e-5 → 1e-5
+
+### Results
+
+| Metric | Validation | Δ vs #001 |
+|--------|-----------|-----------|
+| Accuracy | 89.1% | **+1.8%** ✅ |
+
+---
+
+## Summary
+
+| Experiment | Val Accuracy | Notes |
+|-----------|--------------|-------|
+| #001 Baseline | 87.3% | Overfitting |
+| #002 Regularized | 89.1% | Better |
+| #003 [Planned] | TBD | Data augmentation |
+
+## TODO
+
+- [ ] Try data augmentation
+- [ ] Experiment with RoBERTa-large
+- [ ] Error analysis on Class 3
+`
+  },
+
+  // API & WEB SERVICE
+  {
+    id: "api-rest",
+    title: "REST API Reference",
+    desc: "Comprehensive REST API documentation with endpoints, auth, and response examples.",
+    type: "api",
+    content: `# [Project Name] API Reference
+
+**Version:** v1.0  |  **Base URL:** \`https://api.example.com/v1\`
+
+[![API Status](https://img.shields.io/badge/API-Online-brightgreen)](https://status.example.com)
+[![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-6BA539)](openapi.yaml)
+
+## 🔐 Authentication
+
+\`\`\`http
+Authorization: Bearer YOUR_API_TOKEN
+Content-Type: application/json
+\`\`\`
+
+## 📋 Endpoints
+
+### List Documents
+
+\`\`\`http
+GET /documents?page=1&limit=20
+\`\`\`
+
+**Response \`200 OK\`**
+
+\`\`\`json
+{
+  "status": "success",
+  "data": {
+    "documents": [
+      {
+        "id": "doc_abc123",
+        "title": "My Document",
+        "word_count": 342,
+        "created_at": "2026-07-07T10:30:00Z"
+      }
+    ],
+    "pagination": { "page": 1, "total": 145 }
+  }
+}
+\`\`\`
+
+### Create Document
+
+\`\`\`http
+POST /documents
+\`\`\`
+
+\`\`\`json
+{
+  "title": "New Document",
+  "content": "# Hello World\\n\\nMarkdown content.",
+  "tags": ["tutorial"]
+}
+\`\`\`
+
+### Get / Update / Delete Document
+
+\`\`\`http
+GET    /documents/{id}
+PATCH  /documents/{id}
+DELETE /documents/{id}
+\`\`\`
+
+## ❌ Error Codes
+
+| Status | Code | Meaning |
+|--------|------|---------|
+| 400 | \`INVALID_PARAMS\` | Missing or malformed parameters |
+| 401 | \`UNAUTHORIZED\` | Invalid or missing token |
+| 404 | \`NOT_FOUND\` | Resource does not exist |
+| 429 | \`RATE_LIMITED\` | Too many requests |
+| 500 | \`SERVER_ERROR\` | Internal server error |
+
+## ⏱️ Rate Limits
+
+| Plan | Requests/min | Requests/day |
+|------|-------------|--------------|
+| Free | 60 | 1,000 |
+| Pro | 600 | 50,000 |
+| Enterprise | Custom | Unlimited |
+`
+  },
+  {
+    id: "api-graphql",
+    title: "GraphQL API Documentation",
+    desc: "GraphQL schema docs with queries, mutations, and subscriptions.",
+    type: "api",
+    content: `# [Project] GraphQL API
+
+**Endpoint:** \`https://api.example.com/graphql\`
+**Playground:** \`https://api.example.com/graphql/playground\`
+
+## Authentication
+
+\`\`\`
+Authorization: Bearer <token>
+\`\`\`
+
+## Schema Types
+
+\`\`\`graphql
+type Document {
+  id: ID!
+  title: String!
+  content: String!
+  wordCount: Int!
+  author: User!
+  createdAt: DateTime!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+\`\`\`
+
+## Queries
+
+\`\`\`graphql
+query GetDocuments($first: Int, $after: String) {
+  documents(first: $first, after: $after) {
+    edges {
+      node { id title wordCount createdAt }
+    }
+    pageInfo { hasNextPage endCursor }
+    totalCount
+  }
+}
+\`\`\`
+
+## Mutations
+
+\`\`\`graphql
+mutation CreateDocument($input: CreateDocumentInput!) {
+  createDocument(input: $input) {
+    document { id title createdAt }
+    errors { field message }
+  }
+}
+\`\`\`
+
+**Variables:**
+\`\`\`json
+{
+  "input": {
+    "title": "New Document",
+    "content": "# Hello\\n\\nMarkdown.",
+    "tags": ["tutorial"]
+  }
+}
+\`\`\`
+
+## Subscriptions
+
+\`\`\`graphql
+subscription OnDocumentUpdated($id: ID!) {
+  documentUpdated(id: $id) {
+    id content updatedAt
+  }
+}
+\`\`\`
+`
+  },
+
+  // INTERNAL PROJECT / FOLDER
+  {
+    id: "internal-project",
+    title: "Internal Project / Team README",
+    desc: "Internal documentation with onboarding, contacts, and team conventions.",
+    type: "internal",
+    content: `# [Project Name] — Internal Documentation
+
+> 🔒 **Internal Use Only** — Do not share outside [Company Name]
+
+**Team:** [Team Name]
+**Slack:** [#channel-name](https://slack.com)
+**Jira:** [PROJ Board](https://jira.company.com/projects/PROJ)
+
+---
+
+## 🎯 Project Overview
+
+**What is it?** [1-2 sentence description and business value.]
+
+**Stakeholders:**
+
+| Role | Name | Contact |
+|------|------|---------|
+| Product Manager | [Name] | @slack-handle |
+| Tech Lead | [Name] | @slack-handle |
+| QA Lead | [Name] | @slack-handle |
+
+## 🚀 Onboarding Checklist
+
+- [ ] Get GitHub access to this repo
+- [ ] Join Slack channels: #[project], #deployments
+- [ ] Set up local dev environment (see below)
+- [ ] Complete security training
+- [ ] Review architecture diagram
+
+## 🛠️ Local Setup
+
+\`\`\`bash
+git clone https://github.com/company/project-name.git
+cd project-name
+cp .env.example .env   # Ask Tech Lead for values
+npm install
+docker-compose up -d
+npm run dev
+\`\`\`
+
+**Dev:** http://localhost:3000
+
+## 📐 Conventions
+
+- **Branches:** \`feat/PROJ-123-short-description\`
+- **Commits:** [Conventional Commits](https://conventionalcommits.org)
+- **PRs:** 2 approvals + CI green
+- **Formatter:** Prettier | **Linter:** ESLint
+
+## 🚦 Deployments
+
+| Environment | Branch | URL | Trigger |
+|-------------|--------|-----|---------|
+| Dev | \`develop\` | dev.internal.company.com | Push |
+| Staging | \`main\` | staging.company.com | PR merge |
+| Production | \`main\` | app.company.com | Manual |
+
+## 📊 Monitoring
+
+| Tool | Purpose | Link |
+|------|---------|------|
+| DataDog | APM + Metrics | [Dashboard](https://datadoghq.com) |
+| PagerDuty | Alerts | [Incidents](https://pagerduty.com) |
+| Sentry | Error tracking | [Project](https://sentry.io) |
+`
+  },
+  {
+    id: "internal-runbook",
+    title: "Operational Runbook",
+    desc: "Step-by-step runbook for common operational tasks and incident response.",
+    type: "internal",
+    content: `# Operational Runbook — [Service Name]
+
+> **Owner:** [Team] | **Last Updated:** 2026-07-07
+
+## 📞 Escalation Path
+
+| Level | Who | When |
+|-------|-----|------|
+| L1 | On-call Engineer | First 15 min |
+| L2 | Tech Lead | After 15 min |
+| L3 | Engineering Manager | After 30 min |
+
+---
+
+## 🚨 Incident Procedures
+
+### High CPU Usage (>90%)
+
+\`\`\`bash
+# Check CPU usage
+aws cloudwatch get-metric-statistics \\
+  --namespace AWS/ECS --metric-name CPUUtilization \\
+  --period 300 --statistics Average
+
+# Scale up service
+aws ecs update-service \\
+  --cluster prod-cluster \\
+  --service api-service \\
+  --desired-count 4
+\`\`\`
+
+### Database Connection Exhaustion
+
+\`\`\`sql
+-- Check active connections
+SELECT count(*) FROM pg_stat_activity;
+
+-- Kill idle connections
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE state = 'idle'
+AND query_start < NOW() - INTERVAL '5 minutes';
+\`\`\`
+
+### Service Completely Down
+
+\`\`\`bash
+# Check ECS task status
+aws ecs describe-services --cluster prod-cluster --services api-service
+
+# Rollback to previous deployment
+./scripts/rollback.sh --service api-service --steps 1
+\`\`\`
+
+---
+
+## 📝 Post-Incident Template
+
+**Date:** [Date] | **Duration:** [X hours] | **Severity:** P[1/2/3]
+
+### Timeline
+
+| Time (UTC) | Event |
+|-----------|-------|
+| HH:MM | Alert triggered |
+| HH:MM | Root cause identified |
+| HH:MM | Service restored |
+
+### Root Cause
+
+[Description of what caused the incident]
+
+### Action Items
+
+| Action | Owner | Due Date |
+|--------|-------|----------|
+| [Fix] | @engineer | [Date] |
 `
   }
 ];
@@ -1359,15 +2287,30 @@ const openTemplatesModal = () => {
 
 const renderTemplatesGrid = (templates) => {
   templatesGrid.innerHTML = '';
+  if (templates.length === 0) {
+    templatesGrid.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px;">No templates in this category yet.</p>';
+    return;
+  }
+  const CATEGORY_LABELS = {
+    profile: 'Profile', software: 'Software App', opensource: 'Open Source',
+    research: 'Research', devops: 'DevOps / IaC', ml: 'ML / AI',
+    api: 'API & Web', internal: 'Internal Docs'
+  };
+  const CATEGORY_COLORS = {
+    profile: '#6366f1', software: '#0ea5e9', opensource: '#10b981',
+    research: '#f59e0b', devops: '#ef4444', ml: '#8b5cf6',
+    api: '#f97316', internal: '#64748b'
+  };
   templates.forEach(tpl => {
     const card = document.createElement('div');
     card.className = 'template-card';
     card.onclick = () => selectTemplate(tpl.id);
-    
+    const color = CATEGORY_COLORS[tpl.type] || '#6366f1';
+    const label = CATEGORY_LABELS[tpl.type] || tpl.type;
     card.innerHTML = `
       <div class="template-card-header">
         <h4>${tpl.title}</h4>
-        <span class="badge free">${tpl.type.toUpperCase()}</span>
+        <span class="badge" style="background:${color}22;color:${color};border:1px solid ${color}44;">${label}</span>
       </div>
       <p>${tpl.desc}</p>
       <button class="template-card-btn">Load Template</button>
@@ -1380,7 +2323,7 @@ const filterTemplatesList = (category) => {
   if (category === 'all') {
     renderTemplatesGrid(TEMPLATES_DATABASE);
   } else {
-    const filtered = TEMPLATES_DATABASE.filter(t => t.type === category || (category === 'free' && t.type === 'free') || (category === 'premium' && t.type === 'premium'));
+    const filtered = TEMPLATES_DATABASE.filter(t => t.type === category);
     renderTemplatesGrid(filtered);
   }
 };
@@ -1444,18 +2387,32 @@ const showToast = (message) => {
 // =============================================
 const floatingTooltip = document.createElement('div');
 floatingTooltip.id = 'cheat-floating-tooltip';
-floatingTooltip.innerHTML = '<div class="tooltip-header">Template Preview:</div><pre class="tooltip-body"></pre>';
+floatingTooltip.innerHTML = `
+  <div class="tooltip-section-label tooltip-syntax-label">Syntax / Usage</div>
+  <pre class="tooltip-body"></pre>
+  <div class="tooltip-section-label tooltip-output-label" style="margin-top:10px;">Rendered Output</div>
+  <div class="tooltip-rendered"></div>
+`;
 document.body.appendChild(floatingTooltip);
 
 let tooltipHideTimer = null;
 
 const showFloatingTooltip = (rowEl, templateText) => {
   if (tooltipHideTimer) clearTimeout(tooltipHideTimer);
-  const pre = floatingTooltip.querySelector('.tooltip-body');
-  pre.textContent = templateText;
+
+  // Populate syntax section
+  floatingTooltip.querySelector('.tooltip-body').textContent = templateText;
+
+  // Populate rendered HTML section
+  const rendered = floatingTooltip.querySelector('.tooltip-rendered');
+  try {
+    rendered.innerHTML = marked.parse(replaceEmojiTokens(templateText));
+  } catch (e) {
+    rendered.textContent = templateText;
+  }
 
   const rect = rowEl.getBoundingClientRect();
-  const tooltipW = 260;
+  const tooltipW = 300;
   const viewportW = window.innerWidth;
   let left = rect.right + 12;
   if (left + tooltipW > viewportW - 8) {
@@ -1612,3 +2569,56 @@ const syncGridFromInputs = () => {
 
 document.getElementById('table-cols-input').addEventListener('input', syncGridFromInputs);
 document.getElementById('table-rows-input').addEventListener('input', syncGridFromInputs);
+
+// =============================================
+// PANE DRAG RESIZER
+// =============================================
+(function initPaneResizer() {
+  const resizer = document.getElementById('pane-resizer');
+  const container = document.getElementById('editor-container');
+  const paneEditor = document.getElementById('pane-markdown');
+  const panePreview = document.getElementById('pane-preview');
+  if (!resizer || !container) return;
+
+  let isResizing = false;
+  let startX = 0;
+  let startEditorWidth = 0;
+  let containerWidth = 0;
+
+  resizer.addEventListener('mousedown', (e) => {
+    isResizing = true;
+    startX = e.clientX;
+    const containerRect = container.getBoundingClientRect();
+    containerWidth = containerRect.width - 6; // subtract resizer width
+    startEditorWidth = paneEditor.getBoundingClientRect().width;
+    resizer.classList.add('dragging');
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isResizing) return;
+    const dx = e.clientX - startX;
+    let newEditorWidth = startEditorWidth + dx;
+    const minWidth = 120;
+    const maxWidth = containerWidth - minWidth;
+    newEditorWidth = Math.max(minWidth, Math.min(maxWidth, newEditorWidth));
+    const newPreviewWidth = containerWidth - newEditorWidth;
+    // Use fr units won't work directly — set pixel widths via grid-template-columns
+    container.style.gridTemplateColumns = `${newEditorWidth}px 6px ${newPreviewWidth}px`;
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!isResizing) return;
+    isResizing = false;
+    resizer.classList.remove('dragging');
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  });
+
+  // Double-click to reset to 50/50
+  resizer.addEventListener('dblclick', () => {
+    container.style.gridTemplateColumns = '1fr 6px 1fr';
+  });
+})();
