@@ -1,0 +1,22 @@
+{
+  "name": "mdwriter-online",
+  "version": "1.0.0",
+  "description": "Premium browser-based Markdown editor with Word-like ease, templates, local autosave, and HTML/Word converters.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000 -c-1"
+  },
+  "keywords": [
+    "markdown",
+    "editor",
+    "wysiwyg",
+    "word",
+    "converter",
+    "readme"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

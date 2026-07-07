@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDWriterOnline - Premium Online Markdown Editor</title>
+  <meta name="description" content="A powerful, privacy-first browser-based Markdown editor with Word-like ease, templates, local backup, and advanced developer utilities.">
+  <link rel="stylesheet" href="styles.css?v=15">
+  <!-- Google Fonts: Inter and Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Markdown & DOCX Libraries via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</head>
+<body class="dark-theme">
+  <!-- App Container -->
+  <div class="app-layout">
+    
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <h1>MDWriter <span>Online</span></h1>
+      </div>
+      
+      <div class="header-actions">
+        <button id="btn-new" type="button" class="header-btn" title="Create New Document">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          New
+        </button>
+        <button id="btn-templates" type="button" class="header-btn" title="Choose Template">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+          Templates
+        </button>
+      </div>
+
+      <div class="header-right">
+        <!-- Theme Toggle -->
+        <button id="btn-theme-toggle" class="icon-btn" title="Toggle Theme">
+          <svg id="theme-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="theme-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="workspace-container">
+      
+      <!-- Collapsible Cheat Sheet Sidebar (Left) -->
+      <aside class="sidebar-panel collapsed" id="cheat-sheet-sidebar">
+        <div class="sidebar-header">
+          <h3>Markdown Cheat Sheet</h3>
+          <button id="btn-close-sidebar" class="icon-btn" title="Close Panel">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        
+        <div class="sidebar-search">
+          <input type="text" id="cheat-search" placeholder="Search markdown syntax...">
+        </div>
+
+        <div class="sidebar-content" id="cheat-sheet-content">
+          <!-- Populated via Javascript -->
+        </div>
+      </aside>
+
+      <!-- Main Editor/Workspace Area -->
+      <main class="editor-workspace">
+        
+        <!-- Workspace Subheader: View Switcher & Export buttons -->
+        <div class="workspace-toolbar">
+          <div class="toolbar-left-group">
+            <!-- Sidebar toggle -->
+            <button id="btn-toggle-sidebar" class="toolbar-btn" title="Toggle Cheat Sheet">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              <span>Cheat Sheet</span>
+            </button>
+            
+            <div class="divider"></div>
+
+            <!-- Editor Mode Switcher -->
+            <div class="mode-selector">
+              <button id="mode-split" class="mode-btn active" data-mode="split">Split View</button>
+              <button id="mode-editor" class="mode-btn" data-mode="editor">Markdown Only</button>
+              <button id="mode-wysiwyg" class="mode-btn" data-mode="wysiwyg">Rich Text (Word)</button>
+            </div>
+          </div>
+
+          <div class="toolbar-right-group">
+            <!-- Export Actions -->
+            <button id="btn-copy-code" class="action-btn secondary" title="Copy Markdown to Clipboard">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Code
+            </button>
+            <button id="btn-export-md" class="action-btn primary" title="Download as .md document">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export .md
+            </button>
+          </div>
+        </div>
+
+        <!-- Markdown Element Formatting Toolbar -->
+        <div class="formatting-toolbar" id="format-toolbar">
+          <button class="format-btn" data-format="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+          <button class="format-btn" data-format="italic" title="Italic (Ctrl+I)"><i>I</i></button>
+          <button class="format-btn" data-format="underline" title="Underline (Ctrl+U)"><u>U</u></button>
+          <button class="format-btn" data-format="strikethrough" title="Strikethrough"><s>S</s></button>
+          <div class="toolbar-divider"></div>
+          <button class="format-btn" data-format="h1" title="Heading 1">H1</button>
+          <button class="format-btn" data-format="h2" title="Heading 2">H2</button>
+          <button class="format-btn" data-format="h3" title="Heading 3">H3</button>
+          <div class="toolbar-divider"></div>
+          <button class="format-btn" data-format="quote" title="Blockquote">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </button>
+          <button class="format-btn" data-format="link" title="Insert Link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </button>
+          <button class="format-btn" data-format="image" title="Insert Image">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </button>
+          <button class="format-btn" data-format="code" title="Inline Code">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </button>
+          <button class="format-btn" data-format="code-block" title="Code Block">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 8l-4 4 4 4"/><path d="M14 8l4 4-4 4"/></svg>
+          </button>
+          <div class="toolbar-divider"></div>
+          <button class="format-btn" data-format="ul" title="Bullet List">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><line x1="4" y1="6" x2="4.01" y2="6"/><line x1="4" y1="12" x2="4.01" y2="12"/><line x1="4" y1="18" x2="4.01" y2="18"/></svg>
+          </button>
+          <button class="format-btn" data-format="ol" title="Numbered List">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4H3"/><path d="M4 10h2"/></svg>
+          </button>
+          <button class="format-btn" data-format="table" title="Insert Table">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18M3 3h18v18H3z"/></svg>
+          </button>
+          <div class="toolbar-divider"></div>
+          <button class="format-btn" id="btn-undo" title="Undo (Ctrl+Z)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+          <button class="format-btn" id="btn-redo" title="Redo (Ctrl+Y)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/></svg>
+          </button>
+        </div>
+
+        <!-- Working Panel with Editors & Previewer -->
+        <div class="editor-panes-container split-view" id="editor-container">
+          
+          <!-- Code Editor Pane -->
+          <div class="pane-editor" id="pane-markdown">
+            <div class="pane-header-label">Markdown Source</div>
+            <div class="editor-input-area">
+              <div class="line-numbers" id="editor-line-numbers">1</div>
+              <textarea id="markdown-textarea" placeholder="Type standard Markdown syntax here..." spellcheck="false"></textarea>
+            </div>
+          </div>
+
+          <!-- Drag Resizer Handle -->
+          <div class="pane-resizer" id="pane-resizer" title="Drag to resize panes">
+            <div class="resizer-grip"></div>
+          </div>
+          
+          <!-- Live Preview Pane -->
+          <div class="pane-preview" id="pane-preview">
+            <div class="pane-header-label">Live Preview</div>
+            <div id="preview-output" class="markdown-body"></div>
+          </div>
+          
+          <!-- WYSIWYG Rich Text Editor Pane -->
+          <div class="pane-wysiwyg" id="pane-wysiwyg-container" style="display: none;">
+            <div class="pane-header-label">Rich Text Editor</div>
+            <div id="wysiwyg-editor" class="wysiwyg-body" contenteditable="true" placeholder="Start typing rich text here..."></div>
+          </div>
+          
+        </div>
+
+        <!-- Status & Stats Footer -->
+        <footer class="app-footer">
+          <div class="footer-stats">
+            <div class="stat-item"><span id="word-count">0</span> words</div>
+            <div class="stat-item"><span id="char-count">0</span> characters</div>
+            <div class="stat-item"><span id="read-time">0</span> min read</div>
+          </div>
+          <div class="footer-status">
+            <span class="status-indicator-dot" id="status-indicator"></span>
+            <span id="status-message">Ready</span>
+          </div>
+        </footer>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- Modal: Templates Library -->
+  <div class="modal-overlay" id="modal-templates">
+    <div class="modal-card modal-wide">
+      <div class="modal-header">
+        <h2>Markdown Templates Library</h2>
+        <button class="modal-close icon-btn" onclick="closeModal('modal-templates')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-tabs">
+        <button class="tab-btn active" data-tab="all">All</button>
+        <button class="tab-btn" data-tab="profile">Profile</button>
+        <button class="tab-btn" data-tab="software">Software App</button>
+        <button class="tab-btn" data-tab="opensource">Open Source</button>
+        <button class="tab-btn" data-tab="research">Research</button>
+        <button class="tab-btn" data-tab="devops">DevOps / IaC</button>
+        <button class="tab-btn" data-tab="ml">ML / AI</button>
+        <button class="tab-btn" data-tab="api">API &amp; Web</button>
+        <button class="tab-btn" data-tab="internal">Internal Docs</button>
+      </div>
+      <div class="modal-body templates-grid" id="templates-grid-container">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Custom Confirmation -->
+  <div class="modal-overlay" id="modal-confirm">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Confirm Action</h2>
+        <button class="modal-close icon-btn" onclick="closeModal('modal-confirm')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" style="padding: 20px;">
+        <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+          This will replace or remove your current workspace data. Are you sure?
+        </p>
+      </div>
+      <div class="modal-footer justify-end" style="gap: 12px; display: flex;">
+        <button type="button" class="action-btn secondary" onclick="closeModal('modal-confirm')">Cancel</button>
+        <button type="button" class="action-btn primary" id="btn-confirm-action">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Modal: Table Size Picker -->
+  <div class="modal-overlay" id="modal-table-picker">
+    <div class="modal-card modal-table-card">
+      <div class="modal-header">
+        <h2>Insert Table</h2>
+        <button class="modal-close icon-btn" onclick="closeModal('modal-table-picker')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body table-picker-body">
+        <p class="table-picker-hint">Hover or click to select table dimensions</p>
+        <div class="table-grid-picker" id="table-grid-picker"></div>
+        <div class="table-size-label" id="table-size-label">0 × 0</div>
+        <div class="table-manual-inputs">
+          <div class="table-input-group">
+            <label>Columns</label>
+            <input type="number" id="table-cols-input" min="1" max="12" value="3" placeholder="3">
+          </div>
+          <div class="table-input-group">
+            <label>Rows</label>
+            <input type="number" id="table-rows-input" min="1" max="20" value="3" placeholder="3">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer justify-end" style="gap: 12px; display: flex;">
+        <button type="button" class="action-btn secondary" onclick="closeModal('modal-table-picker')">Cancel</button>
+        <button type="button" class="action-btn primary" id="btn-insert-table-confirm">Insert Table</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=15"></script>
+</body>
+</html>
