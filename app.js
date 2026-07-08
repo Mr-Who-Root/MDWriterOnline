@@ -518,7 +518,8 @@ const setupEventListeners = () => {
     const code = textarea.value;
     navigator.clipboard.writeText(code).then(() => {
       statusMessage.textContent = "Markdown code copied to clipboard";
-      showToast("Code Copied!");
+      document.getElementById('star-request-message').textContent = "Markdown code copied to clipboard!";
+      openModal('modal-star-request');
     });
   });
 
@@ -535,6 +536,8 @@ const setupEventListeners = () => {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     statusMessage.textContent = "Downloaded document.md";
+    document.getElementById('star-request-message').textContent = "Document exported successfully!";
+    openModal('modal-star-request');
   });
 
   // Template tabs switcher
@@ -1141,12 +1144,12 @@ const renderTemplatesGrid = (templates) => {
   const CATEGORY_LABELS = {
     profile: 'Profile', software: 'Software App', opensource: 'Open Source',
     research: 'Research', devops: 'DevOps / IaC', ml: 'ML / AI',
-    api: 'API & Web', internal: 'Internal Docs'
+    api: 'API & Web', internal: 'Internal Docs', advanced: 'Advanced'
   };
   const CATEGORY_COLORS = {
     profile: '#5b9a8b', software: '#4a8bc2', opensource: '#5a9e6f',
     research: '#c4923a', devops: '#c45c5c', ml: '#8b6cb5',
-    api: '#c4773a', internal: '#6b7a8a'
+    api: '#c4773a', internal: '#6b7a8a', advanced: '#a855f7'
   };
   templates.forEach(tpl => {
     const card = document.createElement('div');
